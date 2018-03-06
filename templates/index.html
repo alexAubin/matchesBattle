@@ -1,0 +1,45 @@
+<html>
+<body>
+    <br>
+    <br>
+    <center>
+    <h1>Battle results</h1>
+    <table>
+        <tr>
+            <th width=200px>Nom</th>
+            <th width=100px>Wins</th>
+            <th width=100px>Losses</th>
+        </tr>
+        {% for (player, v) in players %}         
+        <tr>
+            <td>{{ player }}</td>
+            <td>{{ v.wins }}</td>
+            <td>{{ v.losses }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <h2>Envoyer votre IA</h2>
+    <br>
+    <p>(sous forme d'un fichier : prenom.py)</p>
+    <br>
+    <form method=POST enctype=multipart/form-data action="{{ url_for('main.upload') }}">
+        <input type=file name=player>
+        <br>
+        <br>
+        <input type="submit" value="Envoyer!">
+    </form>
+    <br>
+    <h2>ACHTUNG!</h2>
+    <div width=100px>
+    <p>Pour que votre IA fonctionne, elle doit obligatoirement avoir une
+    fonction play(n) qui prends en argument le nombre d'allumette en jeu, et
+    retourne 1, 2 ou 3 quoi qu'il arrive !</p>
+    </div>
+    <br>
+    </center>
+</body>
+</html>
